@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Typeset — LaTeX in, PDF out</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-name">Typeset</span>
+    <span class="brand-sub">LaTeX in, PDF out — nothing to install</span>
+  </div>
+
+  <div class="toolbar">
+    <label class="autocompile">
+      <input type="checkbox" id="autoCompileToggle" checked />
+      <span>Auto-compile</span>
+    </label>
+    <button id="compileBtn" class="btn btn-primary">
+      <span class="btn-label">Compile</span>
+      <span class="btn-hint">Ctrl+Enter</span>
+    </button>
+    <button id="downloadBtn" class="btn btn-ghost" disabled>Download PDF</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="pane editor-pane">
+    <div class="pane-header">
+      <span>main.tex</span>
+      <span id="status" class="status status-idle">
+        <span class="status-dot"></span>
+        <span class="status-text">Ready</span>
+      </span>
+    </div>
+    <textarea id="editor"></textarea>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <section class="pane preview-pane">
+    <div class="pane-header">
+      <span>Preview</span>
+      <span id="pageInfo" class="page-info"></span>
+    </div>
+    <div class="preview-body">
+      <iframe id="pdfFrame" title="Compiled PDF preview"></iframe>
+      <div id="emptyState" class="empty-state">
+        <p>Your compiled PDF will appear here.</p>
+      </div>
+      <div id="errorPanel" class="error-panel" hidden>
+        <div class="error-panel-header">Compile log</div>
+        <pre id="errorLog"></pre>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/stex/stex.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
